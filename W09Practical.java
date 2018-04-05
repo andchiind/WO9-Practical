@@ -82,6 +82,9 @@ public class W09Practical {
                 System.out.println(node.getTextContent());
                 if (search.equals("author")) {
                     Node node1 = nodeAuthor.item(i);
+
+                    NodeList tempTemp = node1.getChildNodes();
+
                     String authorURL = node1.getTextContent() + ".xml";
                     Document authorDocument = builder.parse(XMLurl.openStream());
                     NodeList articles = authorDocument.getElementsByTagName("title");
