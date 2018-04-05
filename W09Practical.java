@@ -2,7 +2,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,8 +25,6 @@ public class W09Practical {
                 String current = args[i];
                 i++;
                 String next = args[i];
-                System.out.println(current);
-                System.out.println(next);
                 switch (current) {
                     case "--search":
                         if (next.equals("author") ||
@@ -53,28 +50,48 @@ public class W09Practical {
 
         query = query.replaceAll(" ", "");
         String url = "http://dblp.org/search/" + search + "/api?q=" + query + "&format=xml&h=30&c=0";
-        System.out.println(url);
 
         URL XMLurl;
 
         try {
             XMLurl = new URL(url);
-            System.out.println(XMLurl.toString());
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-
             Document document = builder.parse(XMLurl.openStream());
 
-            NodeList nodeList = document.getElementsByTagName("author");
-            System.out.println(nodeList.getLength() + " nodes");
+            NodeList nodeList = null;
+            NodeList nodeAuthor = null;
+
+            String urlEncode = URLEncoder.encode(url);
+
+            switch (search) {
+                case "publ": nodeList = document.getElementsByTagName("title");
+                break;
+                case "venue": nodeList = document.getElementsByTagName("venue");
+                break;
+                case "author": nodeList = document.getElementsByTagName("author");
+                nodeAuthor = document.getElementsByTagName("url");
+                break;
+                default: return;
+            }
 
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);
-                Node node1 = node.getFirstChild();
-                //System.out.println(node1.getTextContent());
+
                 System.out.println(node.getTextContent());
-                //System.out.println(node.lookupPrefix());
+                if (search.equals("author")) {
+                    Node node1 = nodeAuthor.item(i);
+                    String authorURL = node1.getTextContent() + ".xml";
+                    Document authorDocument = builder.parse(XMLurl.openStream());
+                    NodeList articles = authorDocument.getElementsByTagName("title");
+                    NodeList coAuthors = authorDocument.getElementsByTagName("coauthors");
+
+                    System.out.println(articles.getLength() + " number of publications");
+                    System.out.println(coAuthors.getLength() + " number of co-Authors");
+
+                }
+
             }
 
         } catch (MalformedURLException e) {
@@ -86,12 +103,5 @@ public class W09Practical {
         } catch (SAXException e) {
             System.out.println("Error: " + e);
         }
-
-
-        String urlEncode = URLEncoder.encode(url);
-
-        File xmlFile = new File(url);
-
-        //DOM XML java !!!!!!!!!!!!!!!!!!
     }
 }
