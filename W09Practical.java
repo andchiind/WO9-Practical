@@ -50,11 +50,13 @@ public class W09Practical {
 
         query = query.replaceAll(" ", "");
         String url = "http://dblp.org/search/" + search + "/api?q=" + query + "&format=xml&h=30&c=0";
-
         URL XMLurl;
 
         try {
+
             XMLurl = new URL(url);
+
+            System.out.println(url);
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -76,27 +78,36 @@ public class W09Practical {
                 default: return;
             }
 
-            for (int i = 0; i < nodeList.getLength(); i++) {
+            for (int i = 0, n = 0; i < nodeList.getLength(); i++, n++) {
                 Node node = nodeList.item(i);
 
-                System.out.println(node.getTextContent());
                 if (search.equals("author")) {
-                    Node node1 = nodeAuthor.item(i);
 
-                    NodeList tempTemp = node1.getChildNodes();
+                    Node node1 = nodeAuthor.item(n++);
 
                     String authorURL = node1.getTextContent() + ".xml";
+                    System.out.println(authorURL + "   " + n);
                     Document authorDocument = builder.parse(XMLurl.openStream());
+
+                    if (authorDocument == null) System.out.println("fuckity fuck fuck");
+
+                    System.out.println(authorDocument.getDocumentURI());
+                    System.out.println(authorDocument.getTextContent());
+
+                    //CHANGE URL, THE RESULTANT PAGE HAS A DIFFERENT URL
+
                     NodeList articles = authorDocument.getElementsByTagName("title");
-                    NodeList coAuthors = authorDocument.getElementsByTagName("coauthors");
+                    NodeList coAuthors = authorDocument.getElementsByTagName("co");
 
-                    System.out.println(articles.getLength() + " number of publications");
-                    System.out.println(coAuthors.getLength() + " number of co-Authors");
+                    System.out.println(coAuthors.getLength());
+                    Node art = articles.item(0);
 
+                    System.out.print(node.getTextContent() + " - " + articles.getLength() + " publications with " + coAuthors.getLength() + " co-authors. \n");
+
+                } else {
+                    System.out.println(node.getTextContent());
                 }
-
             }
-
         } catch (MalformedURLException e) {
             System.out.println("Error: " + e);
         } catch (ParserConfigurationException e) {
