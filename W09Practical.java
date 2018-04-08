@@ -5,6 +5,12 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -48,7 +54,8 @@ public class W09Practical {
             }
         }
 
-        query = query.replaceAll(" ", "");
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //query = query.replaceAll(" ", "");
         String url = "http://dblp.org/search/" + search + "/api?q=" + query + "&format=xml&h=30&c=0";
         URL XMLurl;
 
@@ -56,16 +63,20 @@ public class W09Practical {
 
             XMLurl = new URL(url);
 
-            System.out.println(url);
+            String urlEncode = URLEncoder.encode(url);
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(XMLurl.openStream());
 
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(document);
+            //StreamResult streamResult =  new StreamResult(new File(cache + "\\" + urlEncode));
+            //transformer.transform(source, streamResult);
+
             NodeList nodeList = null;
             NodeList nodeAuthor = null;
-
-            String urlEncode = URLEncoder.encode(url);
 
             switch (search) {
                 case "publ": nodeList = document.getElementsByTagName("title");
@@ -86,20 +97,16 @@ public class W09Practical {
                     Node node1 = nodeAuthor.item(n++);
 
                     String authorURL = node1.getTextContent() + ".xml";
-                    System.out.println(authorURL + "   " + n);
-                    Document authorDocument = builder.parse(XMLurl.openStream());
+                    URL newURL = new URL(authorURL);
+                    Document authorDocument = builder.parse(newURL.openStream());
 
                     if (authorDocument == null) System.out.println("fuckity fuck fuck");
 
-                    System.out.println(authorDocument.getDocumentURI());
-                    System.out.println(authorDocument.getTextContent());
-
                     //CHANGE URL, THE RESULTANT PAGE HAS A DIFFERENT URL
 
-                    NodeList articles = authorDocument.getElementsByTagName("title");
+                    NodeList articles = authorDocument.getElementsByTagName("r");
                     NodeList coAuthors = authorDocument.getElementsByTagName("co");
 
-                    System.out.println(coAuthors.getLength());
                     Node art = articles.item(0);
 
                     System.out.print(node.getTextContent() + " - " + articles.getLength() + " publications with " + coAuthors.getLength() + " co-authors. \n");
@@ -115,6 +122,10 @@ public class W09Practical {
         } catch (IOException e) {
             System.out.println("Error: " + e);
         } catch (SAXException e) {
+            System.out.println("Error: " + e);
+        } catch (TransformerConfigurationException e) {
+            System.out.println("Error: " + e);
+        } catch (TransformerException e) {
             System.out.println("Error: " + e);
         }
     }
