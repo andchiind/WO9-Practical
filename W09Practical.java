@@ -56,7 +56,7 @@ public class W09Practical {
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //query = query.replaceAll(" ", "");
-        String url = "http://dblp.org/search/" + search + "/api?q=" + query + "&format=xml&h=30&c=0";
+        String url = "http://dblp.org/search/" + search + "/api?q=" + query + "&format=xml&h=40&c=0";
         URL XMLurl;
 
         try {
