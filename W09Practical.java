@@ -19,15 +19,6 @@ import java.net.URLEncoder;
 
 public class W09Practical {
 
-    /*private static String search;
-    private static String query;
-    private static String cache;
-    private static boolean searchB = false;
-    private static boolean queryB = false;
-    private static boolean cacheB = false;
-    private static File cacheFile;
-    private static boolean searchInvalid = false;*/
-
 
     public static void main(String[] args) {
 
@@ -42,7 +33,7 @@ public class W09Practical {
         File cacheFile = null;
         boolean searchInvalid = false;
 
-        for (int i = 0; i < args.length; i++) { //THIS LOOKS DUMB
+        for (int i = 0; i < args.length; i++) {
             if (args[i].startsWith("--")) {
 
                 String current = args[i];
@@ -144,8 +135,6 @@ public class W09Practical {
 
             String urlEncode = URLEncoder.encode(url, "UTF-8") + ".xml";
 
-            //System.out.println(urlEncode);
-
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlUrl.openStream());
@@ -189,6 +178,12 @@ public class W09Practical {
 
                     URL newURL = new URL(authorURL);
                     Document authorDocument = builder.parse(newURL.openStream());
+
+                    DOMSource authorSource = new DOMSource(document);
+
+                    StreamResult authorStreamResult = new StreamResult(new File(cache + "/" + authorURLencoded));
+
+                    transformer.transform(authorSource, authorStreamResult);
 
                     NodeList articles = authorDocument.getElementsByTagName("r");
                     NodeList coAuthors = authorDocument.getElementsByTagName("co");
