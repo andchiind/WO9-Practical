@@ -13,9 +13,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.net.*;
 
 public class W09Practical {
 
@@ -135,17 +133,40 @@ public class W09Practical {
 
             String urlEncode = URLEncoder.encode(url, "UTF-8") + ".xml";
 
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(xmlUrl.openStream());
+            cache = cache.replaceAll("\\\\", "/");
 
-            DOMSource source = new DOMSource(document);
+            //A URI is used, since the File constructor does not work with an encoded URL
+            URL cacheURI = new URL(cache + urlEncode);
+
+            File checkCache = new File(cacheURI.toURI());
+
+            Document document = null;
+            Transformer transformer = null;
+            DocumentBuilder builder = null;
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            StreamResult streamResult = new StreamResult(new File(cache + "/" + urlEncode));
+            transformer = transformerFactory.newTransformer();
 
-            transformer.transform(source, streamResult);
+            if (checkCache.exists()) {
+
+                //URL cacheURL = new URL(checkCache.getAbsolutePath());
+
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                builder = factory.newDocumentBuilder();
+                document = builder.parse(cache + urlEncode);
+            } else {
+
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                builder = factory.newDocumentBuilder();
+                document = builder.parse(xmlUrl.openStream());
+
+                DOMSource source = new DOMSource(document);
+
+                StreamResult streamResult = new StreamResult(new File(cache + urlEncode));
+
+                transformer.transform(source, streamResult);
+
+            }
 
             NodeList nodeList = null;
             NodeList nodeAuthor = null;
@@ -222,6 +243,8 @@ public class W09Practical {
         } catch (TransformerConfigurationException e) {
             System.out.println("Error: " + e);
         } catch (TransformerException e) {
+            System.out.println("Error: " + e);
+        } catch (URISyntaxException e) {
             System.out.println("Error: " + e);
         }
     }
