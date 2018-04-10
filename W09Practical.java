@@ -19,65 +19,83 @@ import java.net.URLEncoder;
 
 public class W09Practical {
 
-    private static String search;
+    /*private static String search;
     private static String query;
     private static String cache;
     private static boolean searchB = false;
     private static boolean queryB = false;
     private static boolean cacheB = false;
     private static File cacheFile;
+    private static boolean searchInvalid = false;*/
 
 
     public static void main(String[] args) {
+
+        String next = null;
+        boolean fault = false;
+        String search = null;
+        String query = null;
+        String cache = null;
+        boolean searchB = false;
+        boolean queryB = false;
+        boolean cacheB = false;
+        File cacheFile = null;
+        boolean searchInvalid = false;
 
         for (int i = 0; i < args.length; i++) { //THIS LOOKS DUMB
             if (args[i].startsWith("--")) {
 
                 String current = args[i];
-                i++;
-                //System.out.println(current);
-                //System.out.println(args[i]);
-                //String next = args[i];
+                if (i + 1 < args.length) {
+                    next = args[i + 1];
+                }
+                if (!next.startsWith("--")) {
+                    i++;
+                }
+
                 switch (current) {
                     case "--search":
                         searchB = true;
-                        if (args.length <= i || args[i].startsWith("--") || args[i] == null || args[i].equals("")) {
-                            System.out.println("Missing value for " + current + "\nMalformed command line arguments.");
-                            System.exit(0);
+                        if (args.length <= i
+                                || next.startsWith("--")
+                                || next == null
+                                || next.equals("")) {
+                            searchB = false;
                         } else {
-                            if (args[i].equals("author") ||
-                                    args[i].equals("venue")) {
-                                search = args[i];
-                            } else if (args[i].equals("publication")) {
+                            if (next.equals("author")
+                                    || args[i].equals("venue")) {
+                                search = next;
+                            } else if (next.equals("publication")) {
                                 search = "publ";
                             } else {
-                                System.out.println("Invalid value for --search: " + args[i]); //FILL THIS IN
-                                System.exit(0);
+                                searchInvalid = true;
+                                search = next;
                             }
                         }
                         break;
                     case "--query":
                         queryB = true;
-                        if (args.length <= i || args[i] == null || args[i].startsWith("--") || args[i].equals("") || args[i].equals(" ")) {
-                            System.out.println("Missing value for " + current + "\nMalformed command line arguments.");
-                            System.exit(0);
+                        if (args.length <= i
+                                || next == null
+                                || next.startsWith("--")
+                                || next.equals("")
+                                || next.equals(" ")) {
+                            queryB = false;
                         } else {
-                            query = args[i];
+                            query = next;
                         }
                         break;
                     case "--cache":
                         cacheB = true;
-                        if (args.length <= i) {
-                            cacheFile = new File(args[i]);
-                            if (!cacheFile.isDirectory()) {
-                                System.out.println("Cache directory doesn't exist: noSuchDirectory");
-                            }
-                        }
-                        if (args.length <= i || args[i] == null || args[i].startsWith("--") || args[i].equals("")) {
-                            System.out.println("Missing value for " + current + "\nMalformed command line arguments.");
-                            System.exit(0);
+                        cacheFile = new File(next);
+                        cache = next;
+                        if (args.length <= i
+                                || next == null
+                                || next.startsWith("--")
+                                || next.equals("")) {
+                            cacheB = false;
                         } else {
-                            cache = args[i];
+                            cacheFile = new File(next);
                         }
                         break;
                     default:
@@ -86,41 +104,58 @@ public class W09Practical {
                 }
             }
         }
-        if (!queryB) {
-            System.out.println("Missing value for --query" + "\nMalformed command line arguments.");
-            System.exit(0);
-        }
-        if (!cacheB) {
-            System.out.println("Missing value for --cache" + "\nMalformed command line arguments.");
-            System.exit(0);
-        }
-        if (!searchB) {
-            System.out.println("Missing value for -search" + "\nMalformed command line arguments.");
+
+        if (searchInvalid) {
+            fault = true;
+            System.out.println("Invalid value for --search: " + search + "\nMalformed command line arguments.");
             System.exit(0);
         }
 
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (!cacheFile.isDirectory() || !cacheFile.exists()) {
+            fault = true;
+            System.out.println("Cache directory doesn't exist: " + cache);
+            System.exit(0);
+        }
+
+        if (!queryB) {
+            fault = true;
+            System.out.println("Missing value for --query");
+        }
+        if (!cacheB) {
+            fault = true;
+            System.out.println("Missing value for --cache");
+        }
+        if (!searchB) {
+            fault = true;
+            System.out.println("Missing value for --search");
+        }
+        if (fault) {
+            System.out.println("Malformed command line arguments.");
+            System.exit(0);
+        }
+
         query = query.replaceAll(" ", "+");
         String url = "http://dblp.org/search/" + search + "/api?q=" + query + "&format=xml&h=40&c=0";
-        //System.out.println(url);
-        URL XMLurl;
+        URL xmlUrl;
 
         try {
 
-            XMLurl = new URL(url);
+            xmlUrl = new URL(url);
 
-            String urlEncode = URLEncoder.encode(url) + ".xml";
+            String urlEncode = URLEncoder.encode(url, "UTF-8") + ".xml";
 
             //System.out.println(urlEncode);
 
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(XMLurl.openStream());
+            Document document = builder.parse(xmlUrl.openStream());
+
+            DOMSource source = new DOMSource(document);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(document);
-            StreamResult streamResult = new StreamResult(new File(cache + "\\\\" + urlEncode));
+            StreamResult streamResult = new StreamResult(new File(cache + "/" + urlEncode));
+
             transformer.transform(source, streamResult);
 
             NodeList nodeList = null;
@@ -149,30 +184,33 @@ public class W09Practical {
                     Node node1 = nodeAuthor.item(n++);
 
                     String authorURL = node1.getTextContent() + ".xml";
+
+                    String authorURLencoded = URLEncoder.encode(authorURL, "UTF-8");
+
                     URL newURL = new URL(authorURL);
                     Document authorDocument = builder.parse(newURL.openStream());
 
-                    if (authorDocument == null)
-                        System.out.println("fuckity fuck fuck");
-
-                    //CHANGE URL, THE RESULTANT PAGE HAS A DIFFERENT URL
-
                     NodeList articles = authorDocument.getElementsByTagName("r");
                     NodeList coAuthors = authorDocument.getElementsByTagName("co");
-
-                    Node art = articles.item(0);
 
                     System.out.println(node.getTextContent() + " - " + articles.getLength() + " publications with " + coAuthors.getLength() + " co-authors.");
 
                 } else {
                     if (search.equals("publ")) {
+                        String title = null;
+
                         Node publication = nodeList.item(i).getFirstChild();
                         NodeList authorList = publication.getChildNodes();
+
                         int nAuthors = 0;
                         if (authorList.item(0).getNodeName().equals("author")) {
                             nAuthors = authorList.getLength();
                         }
-                        System.out.println(node.getFirstChild().getNextSibling().getTextContent() + " (number of authors: " + nAuthors + ")");
+
+                        NodeList titleList = document.getElementsByTagName("title");
+                        title = titleList.item(i).getTextContent();
+
+                        System.out.println(title + " (number of authors: " + nAuthors + ")");
                     } else {
                         System.out.println(node.getTextContent());
                     }
