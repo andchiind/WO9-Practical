@@ -120,7 +120,7 @@ public class W09Practical {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
-            StreamResult streamResult = new StreamResult(new File(cache + "\\" + urlEncode));
+            StreamResult streamResult = new StreamResult(new File(cache + "\\\\" + urlEncode));
             transformer.transform(source, streamResult);
 
             NodeList nodeList = null;
