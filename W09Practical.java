@@ -12,8 +12,12 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.*;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 
 public class W09Practical {
 
@@ -37,9 +41,6 @@ public class W09Practical {
                 String current = args[i];
                 if (i + 1 < args.length) {
                     next = args[i + 1];
-                }
-                if (!next.startsWith("--")) {
-                    i++;
                 }
 
                 switch (current) {
@@ -125,20 +126,14 @@ public class W09Practical {
 
         query = query.replaceAll(" ", "+");
         String url = "http://dblp.org/search/" + search + "/api?q=" + query + "&format=xml&h=40&c=0";
-        URL xmlUrl;
 
         try {
 
-            xmlUrl = new URL(url);
+            URL xmlUrl = new URL(url);
 
             String urlEncode = URLEncoder.encode(url, "UTF-8") + ".xml";
 
-            cache = cache.replaceAll("\\\\", "/");
-
-            //A URI is used, since the File constructor does not work with an encoded URL
-            URL cacheURI = new URL(cache + urlEncode);
-
-            File checkCache = new File(cacheURI.toURI());
+            File checkCache = new File(cache + urlEncode);
 
             Document document = null;
             Transformer transformer = null;
@@ -147,17 +142,19 @@ public class W09Practical {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             transformer = transformerFactory.newTransformer();
 
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+            builder = factory.newDocumentBuilder();
+
             if (checkCache.exists()) {
 
-                //URL cacheURL = new URL(checkCache.getAbsolutePath());
+                System.out.println("File found in cache. \n");
+                document = builder.parse(checkCache);
 
-                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-                builder = factory.newDocumentBuilder();
-                document = builder.parse(cache + urlEncode);
             } else {
 
-                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-                builder = factory.newDocumentBuilder();
+                System.out.println("File not found in cache, creating new file.");
+
                 document = builder.parse(xmlUrl.openStream());
 
                 DOMSource source = new DOMSource(document);
@@ -195,16 +192,30 @@ public class W09Practical {
 
                     String authorURL = node1.getTextContent() + ".xml";
 
-                    String authorURLencoded = URLEncoder.encode(authorURL, "UTF-8");
+                    String authorURLEncoded = URLEncoder.encode(authorURL, "UTF-8");
 
-                    URL newURL = new URL(authorURL);
-                    Document authorDocument = builder.parse(newURL.openStream());
+                    File authorCache = new File(cache + authorURLEncoded);
 
-                    DOMSource authorSource = new DOMSource(document);
+                    Document authorDocument = null;
+                    DOMSource authorSource = null;
+                    StreamResult authorStreamResult = null;
 
-                    StreamResult authorStreamResult = new StreamResult(new File(cache + "/" + authorURLencoded));
+                    if (authorCache.exists()) {
 
-                    transformer.transform(authorSource, authorStreamResult);
+                        authorDocument = builder.parse(authorCache);
+
+                    } else {
+
+                        URL newURL = new URL(authorURL);
+
+                        authorDocument = builder.parse(newURL.openStream());
+
+                        authorSource = new DOMSource(document);
+
+                        authorStreamResult = new StreamResult(new File(cache + authorURLEncoded));
+
+                        transformer.transform(authorSource, authorStreamResult);
+                    }
 
                     NodeList articles = authorDocument.getElementsByTagName("r");
                     NodeList coAuthors = authorDocument.getElementsByTagName("co");
@@ -232,20 +243,20 @@ public class W09Practical {
                     }
                 }
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (MalformedURLException e) {
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         } catch (ParserConfigurationException e) {
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         } catch (SAXException e) {
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         } catch (TransformerConfigurationException e) {
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         } catch (TransformerException e) {
-            System.out.println("Error: " + e);
-        } catch (URISyntaxException e) {
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         }
     }
 }
