@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><result>
+<query id="4856">w*</query>
+<status code="200">OK</status>
+<time unit="msecs">42.76</time>
+<completions computed="100" sent="0" total="14799">
+</completions>
+<hits computed="100" first="0" sent="40" total="141279">
+<hit id="12" score="1">
+<info><author>Ibrahim M. W. A</author><url>http://dblp.org/pid/80/5770</url></info>
+<url>URL#12</url>
+</hit>
+<hit id="64" score="1">
+<info><author>Awajan W. A.</author><url>http://dblp.org/pid/46/11299</url></info>
+<url>URL#64</url>
+</hit>
+<hit id="308" score="1">
+<info><author>J. W. van Aalst</author><url>http://dblp.org/pid/62/3858</url></info>
+<url>URL#308</url>
+</hit>
+<hit id="310" score="1">
+<info><author>Jan-Willem van Aalst</author><url>http://dblp.org/pid/56/7289</url></info>
+<url>URL#310</url>
+</hit>
+<hit id="313" score="1">
+<info><author>Wil M. P. van der Aalst</author><notes><note type="affiliation">RWTH Aachen University, Chair of Process and Data Science, Germany</note><note type="affiliation">Eindhoven University of Technology, Department of Mathematics and Computer Science</note></notes><url>http://dblp.org/pid/a/WilMPvanderAalst</url></info>
+<url>URL#313</url>
+</hit>
+<hit id="314" score="1">
+<info><author>Willem van Aalst</author><url>http://dblp.org/pid/82/3289</url></info>
+<url>URL#314</url>
+</hit>
+<hit id="422" score="1">
+<info><author>Wouter H. T. M. Aangenent</author><url>http://dblp.org/pid/13/8137</url></info>
+<url>URL#422</url>
+</hit>
+<hit id="464" score="1">
+<info><author>Willem Abraham van Aardt</author><url>http://dblp.org/pid/202/8322</url></info>
+<url>URL#464</url>
+</hit>
+<hit id="484" score="1">
+<info><author>Wim van Aarle</author><url>http://dblp.org/pid/20/3302</url></info>
+<url>URL#484</url>
+</hit>
+<hit id="567" score="1">
+<info><author>Lonnie W. Aarssen</author><url>http://dblp.org/pid/124/6711</url></info>
+<url>URL#567</url>
+</hit>
+<hit id="624" score="1">
+<info><author>William Aartsen</author><url>http://dblp.org/pid/160/5364</url></info>
+<url>URL#624</url>
+</hit>
+<hit id="677" score="1">
+<info><author>Wendi A. Aasland</author><url>http://dblp.org/pid/04/9296</url></info>
+<url>URL#677</url>
+</hit>
+<hit id="700" score="1">
+<info><author>Winfried A'Avis</author><url>http://dblp.org/pid/60/6276</url></info>
+<url>URL#700</url>
+</hit>
+<hit id="878" score="1">
+<info><author>W. W. (Bill) Abadeer</author><url>http://dblp.org/pid/53/4981</url></info>
+<url>URL#878</url>
+</hit>
+<hit id="1172" score="1">
+<info><author>Wan Abu Bakar Wan Abas</author><url>http://dblp.org/pid/60/1803</url></info>
+<url>URL#1172</url>
+</hit>
+<hit id="1175" score="1">
+<info><author>Zoraini Wati Abas</author><url>http://dblp.org/pid/23/6822</url></info>
+<url>URL#1175</url>
+</hit>
+<hit id="1434" score="1">
+<info><author>Arbab Waseem Abbas</author><url>http://dblp.org/pid/143/6615</url></info>
+<url>URL#1434</url>
+</hit>
+<hit id="1638" score="1">
+<info><author>Wan Faezah Abbas</author><url>http://dblp.org/pid/17/10129</url></info>
+<url>URL#1638</url>
+</hit>
+<hit id="1639" score="1">
+<info><author>Waqas bin Abbas</author><url>http://dblp.org/pid/142/0458</url></info>
+<url>URL#1639</url>
+</hit>
+<hit id="1640" score="1">
+<info><author>Waseem Abbas</author><url>http://dblp.org/pid/79/11046</url></info>
+<url>URL#1640</url>
+</hit>
+<hit id="1641" score="1">
+<info><author>Wasim Abbas</author><url>http://dblp.org/pid/185/9966</url></info>
+<url>URL#1641</url>
+</hit>
+<hit id="1642" score="1">
+<info><author>Wessam Abbas</author><url>http://dblp.org/pid/198/8678</url></info>
+<url>URL#1642</url>
+</hit>
+<hit id="1808" score="1">
+<info><author>Wajid Arshad Abbasi</author><url>http://dblp.org/pid/182/1396</url></info>
+<url>URL#1808</url>
+</hit>
+<hit id="1809" score="1">
+<info><author>Waseem Abbasi</author><url>http://dblp.org/pid/209/7980</url></info>
+<url>URL#1809</url>
+</hit>
+<hit id="1909" score="1">
+<info><author>Wissam Abbass</author><url>http://dblp.org/pid/192/8824</url></info>
+<url>URL#1909</url>
+</hit>
+<hit id="1932" score="1">
+<info><author>Walyd Abbassi</author><url>http://dblp.org/pid/181/0333</url></info>
+<url>URL#1932</url>
+</hit>
+<hit id="1999" score="1">
+<info><author>Wim Abbeloos</author><url>http://dblp.org/pid/136/0527</url></info>
+<url>URL#1999</url>
+</hit>
+<hit id="2025" score="1">
+<info><author>Wiem Abbes</author><url>http://dblp.org/pid/206/1208</url></info>
+<url>URL#2025</url>
+</hit>
+<hit id="2026" score="1">
+<info><author>Wissem Abbes</author><url>http://dblp.org/pid/172/4210</url></info>
+<url>URL#2026</url>
+</hit>
+<hit id="2028" score="1">
+<info><author>Wassim Abbessi</author><url>http://dblp.org/pid/85/512</url></info>
+<url>URL#2028</url>
+</hit>
+<hit id="2038" score="1">
+<info><author>Craig W. Abbey</author><url>http://dblp.org/pid/201/2299</url></info>
+<url>URL#2038</url>
+</hit>
+<hit id="2051" score="1">
+<info><author>William Abbey</author><url>http://dblp.org/pid/139/3574</url></info>
+<url>URL#2051</url>
+</hit>
+<hit id="2061" score="1">
+<info><author>Erwin J. W. Abbink</author><url>http://dblp.org/pid/87/7117</url></info>
+<url>URL#2061</url>
+</hit>
+<hit id="2127" score="1">
+<info><author>David W. Abbott</author><url>http://dblp.org/pid/40/5912</url></info>
+<url>URL#2127</url>
+</hit>
+<hit id="2135" score="1">
+<info><author>Geoffrey W. Abbott</author><url>http://dblp.org/pid/18/10996</url></info>
+<url>URL#2135</url>
+</hit>
+<hit id="2187" score="1">
+<info><author>Paul J. W. Abbott</author><url>http://dblp.org/pid/192/4161</url></info>
+<url>URL#2187</url>
+</hit>
+<hit id="2213" score="1">
+<info><author>William B. Abbott IV</author><url>http://dblp.org/pid/53/6735</url></info>
+<url>URL#2213</url>
+</hit>
+<hit id="2214" score="1">
+<info><author>William L. Abbott</author><url>http://dblp.org/pid/27/5888</url></info>
+<url>URL#2214</url>
+</hit>
+<hit id="2215" score="1">
+<info><author>William W. Abbott</author><url>http://dblp.org/pid/181/3952</url></info>
+<url>URL#2215</url>
+</hit>
+<hit id="2311" score="1">
+<info><author>Wael Abd-Alaziz</author><url>http://dblp.org/pid/186/3292</url></info>
+<url>URL#2311</url>
+</hit>
+</hits>
+</result>

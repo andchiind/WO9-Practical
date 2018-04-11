@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><result>
+<query id="4815">q*</query>
+<status code="200">OK</status>
+<time unit="msecs">3.41</time>
+<completions computed="100" sent="0" total="2838">
+</completions>
+<hits computed="100" first="0" sent="40" total="23466">
+<hit id="6" score="1">
+<info><author>Dang Quang A</author><url>http://dblp.org/pid/120/8441</url></info>
+<url>URL#6</url>
+</hit>
+<hit id="26" score="1">
+<info><author>Nguyen Q. A</author><url>http://dblp.org/pid/63/1842</url></info>
+<url>URL#26</url>
+</hit>
+<hit id="27" score="1">
+<info><author>Nguyen Quang A</author><url>http://dblp.org/pid/70/4136</url></info>
+<url>URL#27</url>
+</hit>
+<hit id="1574" score="1">
+<info><author>Qaisar Abbas</author><url>http://dblp.org/pid/31/9751</url></info>
+<url>URL#1574</url>
+</hit>
+<hit id="1575" score="1">
+<info><author>Qaiser Abbas</author><url>http://dblp.org/pid/79/11031</url></info>
+<url>URL#1575</url>
+</hit>
+<hit id="1576" score="1">
+<info><author>Qamar Abbas</author><url>http://dblp.org/pid/20/10620</url></info>
+<url>URL#1576</url>
+</hit>
+<hit id="1622" score="1">
+<info><author>Syed Qasim Abbas</author><url>http://dblp.org/pid/191/1944</url></info>
+<url>URL#1622</url>
+</hit>
+<hit id="1671" score="1">
+<info><author>A. Q. Abbasi</author><url>http://dblp.org/pid/118/3246</url></info>
+<url>URL#1671</url>
+</hit>
+<hit id="1676" score="1">
+<info><author>Abdul Qudus Abbasi</author><url>http://dblp.org/pid/36/6147</url></info>
+<url>URL#1676</url>
+</hit>
+<hit id="1689" score="1">
+<info><author>Anees Qumar Abbasi</author><url>http://dblp.org/pid/143/1811</url></info>
+<url>URL#1689</url>
+</hit>
+<hit id="1737" score="1">
+<info><author>Maissom Qanber Abbasi</author><url>http://dblp.org/pid/130/4606</url></info>
+<url>URL#1737</url>
+</hit>
+<hit id="1768" score="1">
+<info><author>Qammer H. Abbasi</author><aliases><alias>Qammer Hussain Abbasi</alias></aliases><url>http://dblp.org/pid/42/10077</url></info>
+<url>URL#1768</url>
+</hit>
+<hit id="2884" score="1">
+<info><author>Ikhlas Abdel-Qader</author><notes><note type="affiliation">Western Michigan University, Kalamazoo, MI, USA</note></notes><url>http://dblp.org/pid/98/1440</url></info>
+<url>URL#2884</url>
+</hit>
+<hit id="2885" score="1">
+<info><author>Jareer Abdel-Qader</author><url>http://dblp.org/pid/81/8152</url></info>
+<url>URL#2885</url>
+</hit>
+<hit id="2886" score="1">
+<info><author>Maher Abdel-qader</author><url>http://dblp.org/pid/68/9361</url></info>
+<url>URL#2886</url>
+</hit>
+<hit id="2887" score="1">
+<info><author>Mohammad Abdel-Qader</author><url>http://dblp.org/pid/180/4545</url></info>
+<url>URL#2887</url>
+</hit>
+<hit id="3067" score="1">
+<info><author>Khaled Q. Abdelfadeel</author><url>http://dblp.org/pid/205/3135</url></info>
+<url>URL#3067</url>
+</hit>
+<hit id="4258" score="1">
+<info><author>W. A. Abdul-Qader</author><url>http://dblp.org/pid/171/6999</url></info>
+<url>URL#4258</url>
+</hit>
+<hit id="4259" score="1">
+<info><author>Antar Shaddad Abdul-Qawy</author><url>http://dblp.org/pid/162/2309</url></info>
+<url>URL#4259</url>
+</hit>
+<hit id="4387" score="1">
+<info><author>Muntadher Qasim Abdulhasan</author><url>http://dblp.org/pid/148/0647</url></info>
+<url>URL#4387</url>
+</hit>
+<hit id="4647" score="1">
+<info><author>Mohammad Q. Abdullah</author><url>http://dblp.org/pid/18/7530</url></info>
+<url>URL#4647</url>
+</hit>
+<hit id="4734" score="1">
+<info><author>Qassim A. Abdullah</author><url>http://dblp.org/pid/28/9786</url></info>
+<url>URL#4734</url>
+</hit>
+<hit id="5939" score="1">
+<info><author>Kathleen Q. Abernathy</author><url>http://dblp.org/pid/126/4633</url></info>
+<url>URL#5939</url>
+</hit>
+<hit id="6094" score="1">
+<info><author>Sara Qazvini Abhari</author><url>http://dblp.org/pid/46/9449</url></info>
+<url>URL#6094</url>
+</hit>
+<hit id="7387" score="1">
+<info><author>Douglas Q. Abraham</author><url>http://dblp.org/pid/24/8307</url></info>
+<url>URL#7387</url>
+</hit>
+<hit id="8397" score="1">
+<info><author>Ahmad Rami Abu-El-Quran</author><url>http://dblp.org/pid/13/9602</url></info>
+<url>URL#8397</url>
+</hit>
+<hit id="8493" score="1">
+<info><author>J. Abu-Qahouq</author><url>http://dblp.org/pid/207/2925</url></info>
+<url>URL#8493</url>
+</hit>
+<hit id="8494" score="1">
+<info><author>Jaber A. Abu-Qahouq</author><url>http://dblp.org/pid/13/5076</url></info>
+<url>URL#8494</url>
+</hit>
+<hit id="8682" score="1">
+<info><author>Qusai Abuein</author><url>http://dblp.org/pid/63/5665</url></info>
+<url>URL#8682</url>
+</hit>
+<hit id="8683" score="1">
+<info><author>Qusai Q. Abuein</author><url>http://dblp.org/pid/50/9943</url></info>
+<url>URL#8683</url>
+</hit>
+<hit id="8988" score="1">
+<info><author>Qurban Abushov</author><url>http://dblp.org/pid/130/6095</url></info>
+<url>URL#8988</url>
+</hit>
+<hit id="10528" score="1">
+<info><author>R. I. Acosta-Quinonez</author><url>http://dblp.org/pid/177/7438</url></info>
+<url>URL#10528</url>
+</hit>
+<hit id="11736" score="1">
+<info><author>Michael Q. Adams</author><url>http://dblp.org/pid/143/5670</url></info>
+<url>URL#11736</url>
+</hit>
+<hit id="11920" score="1">
+<info><author>Christoffer Quist Adamsen</author><url>http://dblp.org/pid/165/9632</url></info>
+<url>URL#11920</url>
+</hit>
+<hit id="12327" score="1">
+<info><author>Charles Addo-Quaye</author><url>http://dblp.org/pid/50/4083</url></info>
+<url>URL#12327</url>
+</hit>
+<hit id="18348" score="1">
+<info><author>Mário Q. Aguiar</author><url>http://dblp.org/pid/38/5673</url></info>
+<url>URL#18348</url>
+</hit>
+<hit id="18368" score="1">
+<info><author>Pedro M. Q. Aguiar</author><url>http://dblp.org/pid/53/6053</url></info>
+<url>URL#18368</url>
+</hit>
+<hit id="18394" score="1">
+<info><author>Y. Q. de Aguiar</author><url>http://dblp.org/pid/191/9615</url></info>
+<url>URL#18394</url>
+</hit>
+<hit id="18395" score="1">
+<info><author>Ygor Aguiar</author><aliases><alias>Ygor Q. Aguiar</alias></aliases><url>http://dblp.org/pid/194/7244</url></info>
+<url>URL#18395</url>
+</hit>
+<hit id="18675" score="1">
+<info><author>Fátima Sayuri Quezada Aguilera</author><url>http://dblp.org/pid/127/8845</url></info>
+<url>URL#18675</url>
+</hit>
+</hits>
+</result>

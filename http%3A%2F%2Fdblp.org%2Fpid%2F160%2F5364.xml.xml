@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><dblpperson n="2" name="William Aartsen">
+<person key="homepages/160/5364" mdate="2015-03-24">
+<author>William Aartsen</author>
+</person>
+<r><article key="journals/jssc/PrummelPWTAKHOR15" mdate="2017-05-26">
+<author>Jan Prummel</author>
+<author>Michail Papamichail</author>
+<author>John Willms</author>
+<author>Rahul Todi</author>
+<author>William Aartsen</author>
+<author>Wim Kruiskamp</author>
+<author>Johan Haanstra</author>
+<author>Enno Opbroek</author>
+<author>Soren Rievers</author>
+<author>Peter Seesink</author>
+<author>Jan van Gorsel</author>
+<author>Harrie Woering</author>
+<author>Chris Smit</author>
+<title>A 10 mW Bluetooth Low-Energy Transceiver With On-Chip Matching.</title>
+<pages>3077-3088</pages>
+<year>2015</year>
+<volume>50</volume>
+<journal>J. Solid-State Circuits</journal>
+<number>12</number>
+<ee>https://doi.org/10.1109/JSSC.2015.2469674</ee>
+<url>db/journals/jssc/jssc50.html#PrummelPWTAKHOR15</url>
+</article>
+</r>
+<r><inproceedings key="conf/isscc/PrummelPAWTAKHO15" mdate="2017-05-17">
+<author>Jan Prummel</author>
+<author>Michail Papamichail</author>
+<author>Michele Ancis</author>
+<author>John Willms</author>
+<author>Rahul Todi</author>
+<author>William Aartsen</author>
+<author>Wim Kruiskamp</author>
+<author>Johan Haanstra</author>
+<author>Enno Opbroek</author>
+<author>Soren Rievers</author>
+<author>Peter Seesink</author>
+<author>Harrie Woering</author>
+<author>Chris Smit</author>
+<title>13.3 A 10mW Bluetooth Low-Energy transceiver with on-chip matching.</title>
+<pages>1-3</pages>
+<year>2015</year>
+<booktitle>ISSCC</booktitle>
+<ee>https://doi.org/10.1109/ISSCC.2015.7063014</ee>
+<crossref>conf/isscc/2015</crossref>
+<url>db/conf/isscc/isscc2015.html#PrummelPAWTAKHO15</url>
+</inproceedings>
+</r>
+<coauthors n="13" nc="1">
+<co c="0"><na f="a/Ancis:Michele">Michele Ancis</na></co>
+<co c="0"><na f="g/Gorsel:Jan_van">Jan van Gorsel</na></co>
+<co c="0"><na f="h/Haanstra:Johan">Johan Haanstra</na></co>
+<co c="0"><na f="k/Kruiskamp:Wim">Wim Kruiskamp</na></co>
+<co c="0"><na f="o/Opbroek:Enno">Enno Opbroek</na></co>
+<co c="0"><na f="p/Papamichail:Michail">Michail Papamichail</na></co>
+<co c="0"><na f="p/Prummel:Jan">Jan Prummel</na></co>
+<co c="0"><na f="r/Rievers:Soren">Soren Rievers</na></co>
+<co c="0"><na f="s/Seesink:Peter">Peter Seesink</na></co>
+<co c="0"><na f="s/Smit:Chris">Chris Smit</na></co>
+<co c="0"><na f="t/Todi:Rahul">Rahul Todi</na></co>
+<co c="0"><na f="w/Willms:John">John Willms</na></co>
+<co c="0"><na f="w/Woering:Harrie">Harrie Woering</na></co>
+</coauthors>
+</dblpperson>

@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 
 public class W09Practical {
 
@@ -89,7 +88,6 @@ public class W09Practical {
                         }
                         break;
                     default:
-                        System.out.println("ERROR MESSAGE GOES HERE 2"); //FILL THIS IN
                         System.exit(0);
                 }
             }
@@ -156,13 +154,9 @@ public class W09Practical {
                 System.out.println("File not found in cache, creating new file.");
 
                 document = builder.parse(xmlUrl.openStream());
-
                 DOMSource source = new DOMSource(document);
-
                 StreamResult streamResult = new StreamResult(new File(cache + urlEncode));
-
                 transformer.transform(source, streamResult);
-
             }
 
             NodeList nodeList = null;
@@ -196,29 +190,31 @@ public class W09Practical {
 
                     File authorCache = new File(cache + authorURLEncoded);
 
-                    Document authorDocument = null;
-                    DOMSource authorSource = null;
-                    StreamResult authorStreamResult = null;
+                    document = null;
+
+                    transformerFactory = TransformerFactory.newInstance();
+                    transformer = transformerFactory.newTransformer();
+
+                    factory = DocumentBuilderFactory.newInstance();
+
+                    builder = factory.newDocumentBuilder();
 
                     if (authorCache.exists()) {
 
-                        authorDocument = builder.parse(authorCache);
+                        document = builder.parse(authorCache);
 
                     } else {
 
                         URL newURL = new URL(authorURL);
-
-                        authorDocument = builder.parse(newURL.openStream());
-
-                        authorSource = new DOMSource(document);
-
-                        authorStreamResult = new StreamResult(new File(cache + authorURLEncoded));
-
-                        transformer.transform(authorSource, authorStreamResult);
+                        DOMSource source = new DOMSource(document);
+                        document = builder.parse(newURL.openStream());
+                        source = new DOMSource(document);
+                        StreamResult streamResult = new StreamResult(new File(cache + authorURLEncoded));
+                        transformer.transform(source, streamResult);
                     }
 
-                    NodeList articles = authorDocument.getElementsByTagName("r");
-                    NodeList coAuthors = authorDocument.getElementsByTagName("co");
+                    NodeList articles = document.getElementsByTagName("r");
+                    NodeList coAuthors = document.getElementsByTagName("co");
 
                     System.out.println(node.getTextContent() + " - " + articles.getLength() + " publications with " + coAuthors.getLength() + " co-authors.");
 
